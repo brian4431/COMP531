@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<title> InClass-2</title>
+
+<h1><b> Pizza Order Form</b></h1>
+
+<body>
+
+<form name="pizza">
+Name<br>
+<input type="text" placeholder="your name" name="your_name"><br><br>
+
+Address: #### Street Name...<br>
+<input type="text" id="address" placeholder="your address" name="your address"><br><br>
+
+Phone number: 000-000-0000<br>
+<input type="tel" placeholder="000-000-0000"pattern='[0-9]{7}' name="phone number"><br><br>
+
+<u>Pizza size</u> <br>
+
+<input type="radio" id="size1" name="pizza_size" value="large" > Large
+<input type="radio" id="size2" name="pizza_size" value="medium"> Medium
+<input type="radio" id="size3" name="pizza_size" value="small"> Small<br><br>
+
+<u>Pizza Toppings</u><br>
+<input type="checkbox" name="topping" value="Pepperoni"> Pepperoni
+<input type="checkbox" name="topping" value="Chicken">Chicken
+<input type="checkbox" name="topping" value="Onions">Onions
+<input type="checkbox" name="topping" value="Olivers">Olivers
+<input type="checkbox" name="topping" value="Sausage">Sausage<br><br>
+
+<input type="submit" value="Go!" onclick="return validatePizzaOrderForm()">
+<input type="reset" value="Clear">
+
+</form>
+
+<script> 
+function validatePizzaOrderForm() 
+{
+    var name_check = document.forms["pizza"]["your_name"].value;
+    
+    var radio_check_1= document.getElementById("size1").checked;
+    var radio_check_2= document.getElementById("size2").checked;
+    var radio_check_3= document.getElementById("size3").checked;
+    var address_check=document.getElementById("address").value;
+    
+    
+    if (name_check == null || name_check == "") 
+    {
+        alert("Please tell us your name");
+        return false;
+    }
+    
+    if(isNaN(address_check[0])||isNaN(address_check[1])||isNaN(address_check[2])||isNaN(address_check[3]))
+    {
+        alert("Please tell us your address, for example:1234 Main St.");
+        return false;
+    }    
+
+    if(!(radio_check_1|radio_check_2|radio_check_3)) 
+    {
+        alert("Please select a pizza size");
+        return false;
+    }
+    
+}
+</script>
+
+</body>
+
+</html>
